@@ -13,21 +13,11 @@ class LabelGenerator:
 
         label = ''
 
-        storage = [
-            key for key, value in self.__meta.storage.value.items()
-        ]
-        status = [
-            key for key, value in self.__meta.status.value.items()
-        ]
-        state = [
-            key for key, value in self.__meta.state.value.items()
-        ]
-        loaded = [
-            key for key, value in self.__meta.loaded.value.items()
-        ]
-        departed = [
-            key for key, value in self.__meta.departed.value.items()
-        ]
+        storage = list(self.__meta.storage.value.keys())
+        status = list(self.__meta.status.value.keys())
+        state = list(self.__meta.state.value.keys())
+        loaded = list(self.__meta.loaded.value.keys())
+        departed = list(self.__meta.departed.value.keys())
 
         params = [
             storage, status, state, loaded, departed
@@ -39,16 +29,8 @@ class LabelGenerator:
         return label
 
     def generate(self):
-
-        storage = [
-            key for key, value in self.__meta.storage.value.items()
-        ]
-        storage = choice(storage)
-
-        status = [
-            key for key, value in self.__meta.status.value.items()
-        ]
-        status = choice(status)
+        storage = choice(list(self.__meta.storage.value.keys()))
+        status = choice(list(self.__meta.status.value.keys()))
 
         if status == self.keys.NOT_READY.value:
             state = [
@@ -67,10 +49,7 @@ class LabelGenerator:
             loaded = self.keys.NO.value
 
         if loaded == self.keys.YES.value:
-            departed = [
-                key for key, value in self.__meta.departed.value.items()
-            ]
-            departed = choice(departed)
+            departed = choice(list(self.__meta.departed.value.keys()))
         else:
             departed = self.keys.NO.value
 
