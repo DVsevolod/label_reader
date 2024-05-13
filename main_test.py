@@ -22,5 +22,6 @@ class MainTest:
 
 
 if __name__ == "__main__":
+    # MainTest possible arguments: 3, 5
     main_test = MainTest()
     main_test.run()
