@@ -1,4 +1,4 @@
-from enums import Meta
+from enums import Meta, LabelIndex
 
 
 class LabelReader:
@@ -15,8 +15,8 @@ State: {state}
 """
 
         if len(label) == 5:
-            loaded = self.__meta.loaded.value.get(label[3])
-            departed = self.__meta.departed.value.get(label[4])
+            loaded = self.__meta.loaded.value.get(LabelIndex.loaded.value)
+            departed = self.__meta.departed.value.get(LabelIndex.departed.value)
 
             result += f"""Loaded: {loaded}
 Departed: {departed}"""
